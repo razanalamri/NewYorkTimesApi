@@ -63,20 +63,7 @@ public class Api {
 			 
 			 
 		 case 2:
-			 
-			 
-			 break;
-			 
-			 
-		 case 3:
-			 
-			 break;
-			 
-			 
-		 case 4:
-
-				
-					 String sql ="SELECT author, COUNT(*) AS title FROM authors1 GROUP BY author";
+			 String sql ="SELECT published_date ,COUNT(*) AS title FROM articels1 where published_date between '2021-01-01' AND '2021-12-31'GROUP BY published_date";
 			 System.out.println(sql);
 					
 			         try {
@@ -102,6 +89,44 @@ public class Api {
 			     }
 
 
+			 
+			 
+			 break;
+			 
+			 
+		 case 3:
+			 
+			 break;
+			 
+			 
+		 case 4:
+
+					 String sql2 ="SELECT author, COUNT(*) AS title FROM authors1 GROUP BY author";
+			 System.out.println(sql2);
+					
+			         try {
+
+			             Driver driver = (Driver) Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver").newInstance();
+			             // Registering drivers
+			             DriverManager.registerDriver(driver);
+
+			             // Reference to connection interface
+			             con = DriverManager.getConnection(url, user,
+			                     pass);
+
+			             // Creating a statement
+			             Statement st = con.createStatement();
+			             int m = st.executeUpdate(sql2);
+			             
+			             con.close();
+			         }
+			         catch (Exception ex) {
+
+			             System.err.println(ex);
+			    	 
+			     }
+
+
 			
 		 
 			 
@@ -112,6 +137,32 @@ public class Api {
 			 
 			 
 		 case 5 :
+			 
+			 String sql3 ="select top 3 section_name from sections1 INNER JOIN articels1 ON sections1.id=articels1.sections1_id";
+			 System.out.println(sql3);
+					
+			         try {
+
+			             Driver driver = (Driver) Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver").newInstance();
+			             // Registering drivers
+			             DriverManager.registerDriver(driver);
+
+			             // Reference to connection interface
+			             con = DriverManager.getConnection(url, user,
+			                     pass);
+
+			             // Creating a statement
+			             Statement st = con.createStatement();
+			             int m = st.executeUpdate(sql3);
+			             
+			             con.close();
+			         }
+			         catch (Exception ex) {
+
+			             System.err.println(ex);
+			    	 
+			     }
+
 			 
 			 
 			 
